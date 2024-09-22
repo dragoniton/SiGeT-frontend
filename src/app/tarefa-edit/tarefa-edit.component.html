@@ -1,0 +1,32 @@
+<form class="tarefa-form" (ngSubmit)="onSubmit()">
+  <table class="sideBySide-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="tarefa-full-width">
+    <mat-label>Título</mat-label>
+    <input name="title" [(ngModel)]="tarefa.title" matInput placeholder="'Minha Tarefa'">
+  </mat-form-field></td>
+  <td><mat-form-field class="tarefa-full-width">
+    <mat-label>Responsável</mat-label>
+    <input name="owner" [(ngModel)]="tarefa.owner" matInput placeholder="'Pessoa 1'">
+  </mat-form-field></td>
+  </tr></table>
+
+  <p>
+  <mat-form-field class="tarefaDescrição-full-width">
+    <mat-label>Descrição</mat-label>
+    <textarea name="description" [(ngModel)]="tarefa.description" matInput placeholder="'A tarefa será feita...'"></textarea>
+  </mat-form-field>
+  </p>
+
+  <table class="sideBySide-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="tarefa-full-width">
+    <mat-label>Prioridade</mat-label>
+    <input name="priority" [(ngModel)]="tarefa.priority" matInput placeholder="'Alta/Média/Baixa'">
+  </mat-form-field></td>
+  <td><mat-form-field class="tarefa-full-width">
+    <mat-label>Data de Deadline</mat-label>
+    <input name="deadline" [(ngModel)]="tarefa.deadline" matInput placeholder="'01/01/2000'">
+  </mat-form-field></td>
+  </tr></table>
+  <button type="submit" mat-raised-button>Salvar</button>
+  <button (click)="cancelEditItemEvent.emit(tarefa.id)" mat-raised-button>Cancelar</button>
+</form>

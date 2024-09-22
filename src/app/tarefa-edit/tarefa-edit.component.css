@@ -1,0 +1,20 @@
+.tarefa-full-width{
+  width: 100%;
+}
+
+.sideBySide-full-width{
+  width: 100%;
+}
+td {
+  padding-right: 8px;
+}
+
+.tarefa-form{
+  min-width: 50px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.tarefaDescrição-full-width{
+  width: 145%;
+}

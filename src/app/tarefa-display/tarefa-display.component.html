@@ -1,0 +1,19 @@
+<div class="main">
+  <p>
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{tarefa.title}}</mat-card-title>
+        <mat-card-subtitle>Responsável: {{tarefa.owner}}<br/>
+          Prioridade: {{tarefa.priority}}<br/>
+          Deadline: {{tarefa.deadline}}<br/>
+          Id da tarefa: {{tarefa.id}}<br/>
+          Descrição: {{tarefa.description}}
+          </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button (click)="editItemEvent.emit(tarefa.id)" mat-stroked-button>Editar tarefa</button>
+        <button (click)="removeItemEvent.emit(tarefa.id)" mat-stroked-button>Deletar tarefa</button>
+      </mat-card-actions>
+    </mat-card>
+  </p>
+  </div>

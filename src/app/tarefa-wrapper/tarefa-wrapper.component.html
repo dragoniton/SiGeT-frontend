@@ -1,0 +1,11 @@
+<p>
+  <app-tarefa-edit *ngIf="editable==true"
+  (editItemEvent)="handleSaveEdition($event)"
+  (cancelEditItemEvent)="handleCancelSave()"
+  [tarefa]="tarefa"/>
+
+  <app-tarefa-display *ngIf="editable==false"
+  (removeItemEvent)="removeItemEvent.emit($event)"
+  (editItemEvent)="handleEditClick()"
+  [tarefa]="tarefa"/>
+</p>

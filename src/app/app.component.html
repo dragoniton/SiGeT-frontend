@@ -1,0 +1,15 @@
+<div class="main">
+  <h1>Adicionar nova tarefa</h1>
+  <app-tarefa-input (newDataEvent)="appendData($event)"/>
+  <h2>Lista de tarefas</h2>
+  <button (click)="sortTarefasIdAsc()" mat-stroked-button>Organizar por Id (Asc.)</button>
+  <button (click)="sortTarefasIdDesc()" mat-stroked-button>Organizar por Id (Desc.)</button><br>
+  <label for="filter">Filtrar por título: </label>
+  <input id="filter" type="text" #filterValue ngModel matInput placeholder="'Minha Tarefa'">
+  <button (click)="filterBy(filterValue)" mat-stroked-button>Filtrar</button>
+  <app-tarefa-wrapper *ngFor="let tarefa of tarefas"
+  (removeItemEvent)="removeItem($event)"
+  [tarefa]="tarefa"/>
+  <h3>Lista de tarefas 2: electric boogaloo, the original test</h3>
+  <app-tareffoi-display *ngFor="let tareffoi of tareffoiss"[tareffoi]="tareffoi"/>
+</div>
