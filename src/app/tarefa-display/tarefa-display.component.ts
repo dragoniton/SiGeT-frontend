@@ -42,7 +42,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 export class TarefaDisplayComponent implements AfterViewInit {
 
   @Input() tarefa: Tarefa = new Tarefa(0, "", "", "", "", "", false);
-  @Output() editItemEvent = new EventEmitter<Tarefa>();
+  @Output() editItemEvent = new EventEmitter();
   @Output() cancelEditItemEvent = new EventEmitter<number>();
   @Output() removeItemEvent = new EventEmitter<number>();
   @Output() concludeItemEvent = new EventEmitter<number>();

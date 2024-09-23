@@ -34,12 +34,12 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 export class TarefaEditComponent {
   @Input() tarefa: Tarefa = new Tarefa(0,"","","","","",false);
   tarefas: Tarefa[] = [];
-  @Output() editItemEvent = new EventEmitter<Tarefa>();
+  @Output() editItemEvent = new EventEmitter();
   @Output() cancelEditItemEvent = new EventEmitter();
 
 
   ngOnInit(): void{
-
+    
   }
 
   onSubmit(): void{
