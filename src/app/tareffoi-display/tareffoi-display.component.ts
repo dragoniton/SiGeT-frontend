@@ -15,5 +15,5 @@ import { CommonModule } from '@angular/common';
 })
 export class TareffoiDisplayComponent {
 
-  @Input() tareffoi: Tareffoi = new Tareffoi(0,"","","","","");
+  @Input() tareffoi: Tareffoi = new Tareffoi(0,"","","","","",false);
 }

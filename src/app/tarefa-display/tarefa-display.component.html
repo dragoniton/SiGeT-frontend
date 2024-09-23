@@ -1,19 +1,56 @@
-<div class="main">
-  <p>
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <mat-card-title>{{tarefa.title}}</mat-card-title>
-        <mat-card-subtitle>Responsável: {{tarefa.owner}}<br/>
-          Prioridade: {{tarefa.priority}}<br/>
-          Deadline: {{tarefa.deadline}}<br/>
-          Id da tarefa: {{tarefa.id}}<br/>
-          Descrição: {{tarefa.description}}
-          </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-actions align="end">
-        <button (click)="editItemEvent.emit(tarefa.id)" mat-stroked-button>Editar tarefa</button>
-        <button (click)="removeItemEvent.emit(tarefa.id)" mat-stroked-button>Deletar tarefa</button>
-      </mat-card-actions>
-    </mat-card>
-  </p>
+<mat-form-field>
+  <mat-label>Buscar...</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="'Tarefa 1'" #input>
+</mat-form-field>
+
+<div class="example-container mat-elevation-z8">
+
+  <div class="example-table-container">
+    <table mat-table [dataSource]="dataSource" class="example-table" matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let tarefa">{{ tarefa.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
+        <td mat-cell *matCellDef="let tarefa">{{ tarefa.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="owner">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Responsável</th>
+        <td mat-cell *matCellDef="let tarefa">{{ tarefa.owner }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="priority">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Prioridade</th>
+        <td mat-cell *matCellDef="let tarefa">{{ tarefa.priority }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="deadline">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Deadline</th>
+        <td mat-cell *matCellDef="let tarefa">{{ tarefa.deadline }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
+        <td mat-cell *matCellDef="let tarefa">{{ tarefa.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let tarefa">
+          <button (click)="editItemEvent.emit(tarefa)" mat-stroked-button>Editar</button>
+          <button (click)="removeItemEvent.emit(tarefa.id)" mat-stroked-button>Deletar</button>
+          <button (click)="concludeItemEvent.emit(tarefa.id)" mat-stroked-button>Concluir</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let tarefa; columns: displayedColumns;"></tr>
+    </table>
   </div>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Selecionar página de resultados"></mat-paginator>
+</div>
