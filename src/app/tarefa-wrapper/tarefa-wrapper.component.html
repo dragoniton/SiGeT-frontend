@@ -8,7 +8,6 @@
 
   <app-tarefa-display *ngIf="editable==false"
   (removeItemEvent)="removeItemEvent.emit($event)"
-  (concludeItemEvent)="concludeItemEvent.emit($event)"
   (editItemEvent)="handleEditClick($event)"
   [tarefa]="tarefa"/>
 </p>

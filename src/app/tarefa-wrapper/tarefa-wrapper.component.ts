@@ -21,6 +21,8 @@ export class TarefaWrapperComponent {
   editable: boolean = false;
   constructor(private http: HttpClient){}
 
+  
+
   handleEditClick(tarefa: Tarefa): void{
     this.tarefa = tarefa;
     this.editable = true;
@@ -30,6 +32,7 @@ export class TarefaWrapperComponent {
     this.editable = false;
     this.tarefa = tarefa;
   }
+
 
   handleCancelSave(): void{
     this.editable = false;

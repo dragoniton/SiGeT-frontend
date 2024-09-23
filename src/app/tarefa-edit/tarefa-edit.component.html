@@ -28,6 +28,13 @@
     <input name="deadline" [(ngModel)]="tarefa.deadline" matInput placeholder="'01/01/2001'">
   </mat-form-field></td>
 
+  <mat-label>Concluída</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="valorConcluded">
+      @for (option of valorConcluded; track option) {
+        <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+      }
+    </mat-select>
+
   </tr></table>
   <button type="submit" mat-raised-button>Salvar</button>
   <button (click)="cancelEditItemEvent.emit(tarefa.id)" mat-raised-button>Cancelar</button>

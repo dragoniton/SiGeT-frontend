@@ -63,16 +63,5 @@ export class AppComponent {
     location.reload();
   }
 
-  concludeItem(tarefaId: number): void{
-    var tarefa = this.tarefas.filter((tarefa: Tarefa) => tarefa.id != tarefaId);
-    alert(tarefa.toString());
-    // if(tarefa){
-    //   tarefa.done = !tarefa.done;
-    // }
-    this.http.put("http://localhost:8080/tarefas/" + tarefaId, tarefa)
-      .subscribe(() => {
-      });
-      location.reload();
-  }
 
 }

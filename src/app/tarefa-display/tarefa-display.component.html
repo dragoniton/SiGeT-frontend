@@ -38,12 +38,25 @@
         <td mat-cell *matCellDef="let tarefa">{{ tarefa.description }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="done">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Concluída</th>
+
+        <td mat-cell *matCellDef="let tarefa">
+          <div *ngIf="tarefa.done; else elseBlock">
+            Sim
+          </div>
+          <ng-template #elseBlock>
+            Não
+          </ng-template>
+        </td>
+
+      </ng-container>
+
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let tarefa">
           <button (click)="editItemEvent.emit(tarefa)" mat-stroked-button>Editar</button>
           <button (click)="removeItemEvent.emit(tarefa.id)" mat-stroked-button>Deletar</button>
-          <button (click)="concludeItemEvent.emit(tarefa)" mat-stroked-button>Concluir</button>
         </td>
       </ng-container>
 

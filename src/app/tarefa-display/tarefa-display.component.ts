@@ -45,11 +45,11 @@ export class TarefaDisplayComponent implements AfterViewInit {
   @Output() editItemEvent = new EventEmitter();
   @Output() cancelEditItemEvent = new EventEmitter<number>();
   @Output() removeItemEvent = new EventEmitter<number>();
-  @Output() concludeItemEvent = new EventEmitter<number>();
+  @Output() concludeItemEvent = new EventEmitter();
 
   tarefas: Tarefa[] = [];
   dataSource = new MatTableDataSource<Tarefa>(this.tarefas);
-  displayedColumns: string[] = ['id', 'title', 'owner', 'priority', 'deadline', 'description', 'actions'];
+  displayedColumns: string[] = ['id', 'title', 'owner', 'priority', 'deadline', 'description','done', 'actions'];
   resultsLength = 0;
 
 

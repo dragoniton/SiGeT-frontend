@@ -10,6 +10,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @Component({
@@ -26,11 +27,13 @@ import {provideNativeDateAdapter} from '@angular/material/core';
     MatButtonModule,
     ReactiveFormsModule,
     CommonModule,
+    MatSelectModule
   ],
   templateUrl: './tarefa-edit.component.html',
   styleUrl: './tarefa-edit.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class TarefaEditComponent {
   @Input() tarefa: Tarefa = new Tarefa(0,"","","","","",false);
   tarefas: Tarefa[] = [];
@@ -38,11 +41,24 @@ export class TarefaEditComponent {
   @Output() cancelEditItemEvent = new EventEmitter();
 
 
+  selectedValue: boolean = this.tarefa.done;
+  valorConcluded = [
+    {value: true, viewValue: 'Sim'},
+    {value: false, viewValue: 'Não'},
+  ];
+
   ngOnInit(): void{
-    
+    if(this.tarefa.done==true){
+      this.selectedValue=true
+    }
   }
 
   onSubmit(): void{
+    if(this.selectedValue==true){
+      this.tarefa.done=true;
+    }else if(this.selectedValue==false){
+      this.tarefa.done=false;
+    }
     this.http.post<Tarefa>(
       "http://localhost:8080/tarefas",
       this.tarefa
