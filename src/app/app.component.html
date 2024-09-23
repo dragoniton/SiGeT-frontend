@@ -1,15 +1,27 @@
 <div class="main">
-  <h1>Adicionar nova tarefa</h1>
-  <app-tarefa-input (newDataEvent)="appendData($event)"/>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+
+      <mat-expansion-panel-header>
+        <mat-panel-title> Adicionar nova tarefa </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <h1>Nova tarefa:</h1>
+      <app-tarefa-input (newDataEvent)="appendData($event)"/>
+
+    </mat-expansion-panel>
+  </mat-accordion><br>
+
   <h2>Lista de tarefas</h2>
-  <button (click)="sortTarefasIdAsc()" mat-stroked-button>Organizar por Id (Asc.)</button>
+  <!-- <button (click)="sortTarefasIdAsc()" mat-stroked-button>Organizar por Id (Asc.)</button>
   <button (click)="sortTarefasIdDesc()" mat-stroked-button>Organizar por Id (Desc.)</button><br>
-  <label for="filter">Filtrar por título: </label>
-  <input id="filter" type="text" #filterValue ngModel matInput placeholder="'Minha Tarefa'">
-  <button (click)="filterBy(filterValue)" mat-stroked-button>Filtrar</button>
-  <app-tarefa-wrapper *ngFor="let tarefa of tarefas"
-  (removeItemEvent)="removeItem($event)"
-  [tarefa]="tarefa"/>
-  <h3>Lista de tarefas 2: electric boogaloo, the original test</h3>
-  <app-tareffoi-display *ngFor="let tareffoi of tareffoiss"[tareffoi]="tareffoi"/>
+  <label for="filterTitle">Filtrar por título: </label>
+  <input id="filterTitle" type="text" #filterTitleValue ngModel matInput placeholder="'Minha Tarefa'">
+  <button (click)="filterByTitle(filterTitleValue)" mat-stroked-button>Filtrar</button><br>
+  <label for="filterId">Filtrar por id: </label>
+  <input id="filterId" type="number" #filterIdValue ngModel matInput placeholder="'10'">
+  <button (click)="filterById(filterIdValue)" mat-stroked-button>Filtrar</button> -->
+  <app-tarefa-wrapper [tarefa]="tarefa" (removeItemEvent)="removeItem($event)"
+  />
 </div>

@@ -6,6 +6,7 @@ export class Tarefa {
     public owner: string,
     public priority: string,
     public deadline: string,
+    public done: boolean
 
   ){}
 }
