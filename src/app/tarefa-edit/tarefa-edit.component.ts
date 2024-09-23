@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { FormControl, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {  ReactiveFormsModule } from '@angular/forms';
 import { Tarefa } from '../tarefa';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -8,8 +8,6 @@ import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import {provideNativeDateAdapter} from '@angular/material/core';
 
@@ -26,8 +24,6 @@ import {provideNativeDateAdapter} from '@angular/material/core';
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     ReactiveFormsModule,
     CommonModule,
   ],
@@ -41,14 +37,8 @@ export class TarefaEditComponent {
   @Output() editItemEvent = new EventEmitter<Tarefa>();
   @Output() cancelEditItemEvent = new EventEmitter();
 
-  dateFormControl = new FormControl('', [
-    Validators.required,
-  ]);
 
   ngOnInit(): void{
-    // this.http.get<Tarefa[]>(
-    //   "http://localhost:8080/tarefas"
-    // ).subscribe(data => this.tarefas = data);
 
   }
 

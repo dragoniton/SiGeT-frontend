@@ -24,19 +24,8 @@
   </mat-form-field></td>
 
   <td><mat-form-field class="tarefa-full-width">
-    <mat-label>Data de Deadline</mat-label>
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-
-    <mat-error *ngIf="dateFormControl.hasError('matDatepickerParse') && !dateFormControl.hasError('required')">
-      Por favor, insira uma data válida
-    </mat-error>
-
-    <mat-error *ngIf="dateFormControl.hasError('required')">
-      A data é <strong>obrigatória</strong>
-    </mat-error>
+    <mat-label>Deadline</mat-label>
+    <input name="deadline" ngModel matInput placeholder="'01/01/2001'">
   </mat-form-field></td>
 
 </tr></table>

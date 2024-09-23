@@ -22,7 +22,6 @@
   <label for="filterId">Filtrar por id: </label>
   <input id="filterId" type="number" #filterIdValue ngModel matInput placeholder="'10'">
   <button (click)="filterById(filterIdValue)" mat-stroked-button>Filtrar</button> -->
-  <app-tarefa-wrapper [tarefa]="tarefa" (removeItemEvent)="removeItem($event)"/>
-  <h3>Lista de tarefas 2: electric boogaloo, the original test</h3>
-  <app-tareffoi-display *ngFor="let tareffoi of tareffoiss"[tareffoi]="tareffoi"/>
+  <app-tarefa-wrapper [tarefa]="tarefa" (removeItemEvent)="removeItem($event)"
+  (concludeItemEvent)="concludeItem($event)"/>
 </div>

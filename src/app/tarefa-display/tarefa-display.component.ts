@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, signal} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Tarefa } from '../tarefa';
@@ -13,6 +13,8 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-tarefa-display',
@@ -28,7 +30,9 @@ import { MatInputModule } from '@angular/material/input';
     MatPaginatorModule,
     DatePipe,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonToggleModule,
+    MatCheckboxModule
   ],
   templateUrl: './tarefa-display.component.html',
   styleUrl: './tarefa-display.component.css',
@@ -38,7 +42,7 @@ import { MatInputModule } from '@angular/material/input';
 export class TarefaDisplayComponent implements AfterViewInit {
 
   @Input() tarefa: Tarefa = new Tarefa(0, "", "", "", "", "", false);
-  @Output() editItemEvent = new EventEmitter<Tarefa>(false);
+  @Output() editItemEvent = new EventEmitter<Tarefa>();
   @Output() cancelEditItemEvent = new EventEmitter<number>();
   @Output() removeItemEvent = new EventEmitter<number>();
   @Output() concludeItemEvent = new EventEmitter<number>();

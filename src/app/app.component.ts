@@ -5,7 +5,6 @@ import { Tareffoi } from './tareffoi';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TarefaDisplayComponent } from "./tarefa-display/tarefa-display.component";
 import { CommonModule } from '@angular/common';
-import { TareffoiDisplayComponent } from './tareffoi-display/tareffoi-display.component';
 import { TarefaInputComponent } from "./tarefa-input/tarefa-input.component";
 import { TarefaWrapperComponent } from "./tarefa-wrapper/tarefa-wrapper.component";
 import { TarefaEditComponent } from './tarefa-edit/tarefa-edit.component';
@@ -21,7 +20,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
     TarefaDisplayComponent,
     HttpClientModule,
     CommonModule,
-    TareffoiDisplayComponent,
     TarefaInputComponent,
     TarefaWrapperComponent,
     TarefaEditComponent,
@@ -49,9 +47,6 @@ export class AppComponent {
     ).subscribe(data => this.tarefas = data);
 
 
-    this.http.get<Tareffoi[]>(
-      "http://localhost:8080/tareffoiss"
-    ).subscribe(data => this.tareffoiss = data);
   }
   appendData(newTarefa: any): void{
     this.tarefas.push(newTarefa);
@@ -66,6 +61,18 @@ export class AppComponent {
       this.tarefas = this.tarefas.filter((tarefa: Tarefa) => tarefa.id != tarefaId)
     );
     location.reload();
+  }
+
+  concludeItem(tarefaId: number): void{
+    var tarefa = this.tarefas.filter((tarefa: Tarefa) => tarefa.id != tarefaId);
+    alert(tarefa.toString());
+    // if(tarefa){
+    //   tarefa.done = !tarefa.done;
+    // }
+    this.http.put("http://localhost:8080/tarefas/" + tarefaId, tarefa)
+      .subscribe(() => {
+      });
+      location.reload();
   }
 
 }

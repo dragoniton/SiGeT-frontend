@@ -16,6 +16,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 export class TarefaWrapperComponent {
   @Input() tarefa: Tarefa = new Tarefa(0,"","","","","",false);
   @Output() removeItemEvent = new EventEmitter();
+  @Output() concludeItemEvent = new EventEmitter();
 
   editable: boolean = false;
   constructor(private http: HttpClient){}
@@ -37,11 +38,4 @@ export class TarefaWrapperComponent {
       .subscribe(data => this.tarefa = data);
   }
 
-  handleConcludeClick(){
-    if(this.tarefa.done==false){
-      this.tarefa.done = true;
-    }else{
-      this.tarefa.done = false;
-    }
-  }
 }
