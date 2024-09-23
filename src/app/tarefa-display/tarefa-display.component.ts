@@ -51,6 +51,8 @@ export class TarefaDisplayComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<Tarefa>(this.tarefas);
   displayedColumns: string[] = ['id', 'title', 'owner', 'priority', 'deadline', 'description','done', 'actions'];
   resultsLength = 0;
+  showOnlyNotDone = false;
+  searchFilter = '';
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -76,13 +78,29 @@ export class TarefaDisplayComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(event?: Event) {
+
+    if (event) {
+      this.searchFilter = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    }
+
+    this.dataSource.filterPredicate = (data: Tarefa, filter: string) => {
+      const matchesSearch = !filter || data.title.toLowerCase().includes(filter);
+      const matchesNotDone = !this.showOnlyNotDone || !data.done;
+      return matchesSearch && matchesNotDone;
+    };
+
+    this.dataSource.filter = this.searchFilter || '';
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+
+  }
+
+  toggleDoneTarefas() {
+    this.showOnlyNotDone = !this.showOnlyNotDone;
+    this.applyFilter({ target: { value: '' } } as unknown as Event);
   }
 
 }

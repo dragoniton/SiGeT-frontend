@@ -1,7 +1,12 @@
+<mat-button-toggle-group [value]="false" (change)="toggleDoneTarefas()">
+  <mat-button-toggle value="false">Esconder Concluídas</mat-button-toggle>
+  <mat-button-toggle value="true">Mostrar Tudo</mat-button-toggle>
+</mat-button-toggle-group><br>
 <mat-form-field>
   <mat-label>Buscar...</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="'Tarefa 1'" #input>
 </mat-form-field>
+
 
 <div class="example-container mat-elevation-z8">
 
