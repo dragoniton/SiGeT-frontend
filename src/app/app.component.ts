@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Tarefa } from './tarefa';
-import { Tareffoi } from './tareffoi';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TarefaDisplayComponent } from "./tarefa-display/tarefa-display.component";
 import { CommonModule } from '@angular/common';
@@ -35,7 +34,6 @@ export class AppComponent {
   title = 'SiGeT-frontend';
   tarefa: Tarefa = new Tarefa(0,"","","","","",false);
   tarefas: Tarefa[] = [];
-  tareffoiss: Tareffoi[] = [];
   readonly panelOpenState = signal(false);
   tarefaBeingEdited: Tarefa | null = null;
 
