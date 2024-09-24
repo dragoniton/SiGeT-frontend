@@ -100,7 +100,15 @@ export class TarefaDisplayComponent implements AfterViewInit {
 
   toggleDoneTarefas() {
     this.showOnlyNotDone = !this.showOnlyNotDone;
-    this.applyFilter({ target: { value: '' } } as unknown as Event);
+
+    if (this.showOnlyNotDone) {
+
+      this.dataSource.data = this.tarefas.filter(tarefa => !tarefa.done);
+    } else {
+
+      this.dataSource.data = this.tarefas;
+    }
+    this.applyFilter();
   }
 
 }
